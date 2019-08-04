@@ -1,0 +1,23 @@
+name: counter_mobx
+description: A new Flutter project.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2
+  mobx:
+  flutter_mobx:
+  provider:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner:
+  mobx_codegen:
+
+flutter:
+  uses-material-design: true
