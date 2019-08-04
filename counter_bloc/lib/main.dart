@@ -18,7 +18,7 @@ class App extends StatelessWidget {
         ),
         home: Consumer<CounterBloc>(
           builder: (_, bloc, __) {
-            return CounterPage(bloc);
+            return CounterPage(bloc: bloc);
           },
         ),
       ),

@@ -4,7 +4,8 @@ import '../blocs/counter_bloc.dart';
 class CounterPage extends StatelessWidget {
   final CounterBloc bloc;
 
-  const CounterPage(this.bloc);
+  const CounterPage({@required this.bloc, Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     debugPrint('built scaffold');

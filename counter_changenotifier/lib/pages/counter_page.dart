@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import '../view_models/counter_view_model.dart';
 
 class CounterPage extends StatelessWidget {
+  CounterPage({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
