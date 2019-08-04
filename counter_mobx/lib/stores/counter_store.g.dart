@@ -26,6 +26,23 @@ mixin _$CounterStore on CounterStoreBase, Store {
     }, _$counterAtom, name: '${_$counterAtom.name}_set');
   }
 
+  final _$xAtom = Atom(name: 'CounterStoreBase.x');
+
+  @override
+  int get x {
+    _$xAtom.context.enforceReadPolicy(_$xAtom);
+    _$xAtom.reportObserved();
+    return super.x;
+  }
+
+  @override
+  set x(int value) {
+    _$xAtom.context.conditionallyRunInAction(() {
+      super.x = value;
+      _$xAtom.reportChanged();
+    }, _$xAtom, name: '${_$xAtom.name}_set');
+  }
+
   final _$CounterStoreBaseActionController =
       ActionController(name: 'CounterStoreBase');
 
