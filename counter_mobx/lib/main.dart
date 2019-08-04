@@ -16,7 +16,11 @@ class App extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: CounterPage(),
+        home: Consumer<CounterStore>(
+          builder: (_, store, __) {
+            return CounterPage(store);
+          },
+        ),
       ),
     );
   }

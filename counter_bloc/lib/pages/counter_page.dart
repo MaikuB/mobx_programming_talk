@@ -1,42 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../blocs/counter_bloc.dart';
 
 class CounterPage extends StatelessWidget {
+  final CounterBloc bloc;
+
+  const CounterPage(this.bloc);
   @override
   Widget build(BuildContext context) {
-    return Consumer<CounterBloc>(
-      builder: (_, counterBloc, __) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text('Counter'),
-          ),
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'You have pushed the button this many times:',
-                ),
-                StreamBuilder<int>(
-                  stream: counterBloc.stream,
-                  builder: (context, snapshot) {
-                    return Text(
-                      '${(snapshot.hasData ? snapshot.data : 0)}',
-                      style: Theme.of(context).textTheme.display1,
-                    );
-                  },
-                ),
-              ],
+    debugPrint('built scaffold');
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Counter'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'You have pushed the button this many times:',
             ),
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: counterBloc.increment,
-            tooltip: 'Increment',
-            child: Icon(Icons.add),
-          ),
-        );
-      },
+            StreamBuilder<int>(
+              stream: bloc.stream,
+              builder: (context, snapshot) {
+                debugPrint('built counter text');
+                return Text(
+                  '${(snapshot.hasData ? snapshot.data : 0)}',
+                  style: Theme.of(context).textTheme.display1,
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: bloc.increment,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ),
     );
   }
 }

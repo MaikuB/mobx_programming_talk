@@ -16,7 +16,11 @@ class App extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: CounterPage(),
+        home: Consumer<CounterBloc>(
+          builder: (_, bloc, __) {
+            return CounterPage(bloc);
+          },
+        ),
       ),
       dispose: (_, counterBloc) {
         counterBloc.dispose();
