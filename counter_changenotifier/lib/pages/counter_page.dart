@@ -30,7 +30,7 @@ class CounterPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Provider.of<CounterViewModel>(context).increment();
+          Provider.of<CounterViewModel>(context, listen: false).increment();
         },
         tooltip: 'Increment',
         child: Icon(Icons.add),
