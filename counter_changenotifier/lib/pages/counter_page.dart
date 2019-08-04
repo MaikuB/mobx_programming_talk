@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../blocs/counter_bloc.dart';
+import '../view_models/counter_view_model.dart';
 
 class CounterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<CounterBloc>(
+    return Consumer<CounterViewModel>(
       builder: (_, counterBloc, __) {
         return Scaffold(
           appBar: AppBar(
@@ -18,11 +18,10 @@ class CounterPage extends StatelessWidget {
                 Text(
                   'You have pushed the button this many times:',
                 ),
-                StreamBuilder<int>(
-                  stream: counterBloc.stream,
-                  builder: (context, snapshot) {
+                Consumer<CounterViewModel>(
+                  builder: (context, viewmodel, _) {
                     return Text(
-                      '${(snapshot.hasData ? snapshot.data : 0)}',
+                      '${viewmodel.counter}',
                       style: Theme.of(context).textTheme.display1,
                     );
                   },
