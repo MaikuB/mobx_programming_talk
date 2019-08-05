@@ -11,13 +11,14 @@ class CataloguePage extends StatelessWidget {
   final CatalogueStore catalogueStore;
   final CartStore cartStore;
 
-  const CataloguePage(
+  CataloguePage(
       {@required this.catalogueStore, @required this.cartStore, Key key})
-      : super(key: key);
+      : super(key: key) {
+    catalogueStore.getProducts();
+  }
 
   @override
   Widget build(BuildContext context) {
-    catalogueStore.getProducts();
     return Scaffold(
       appBar: AppBar(
         title: Text('Catalogue'),
