@@ -8,27 +8,27 @@ class CartStore = CartStoreBase with _$CartStore;
 
 abstract class CartStoreBase with Store {
   @observable
-  ObservableList<LineItem> cartEntries = ObservableList<LineItem>();
+  ObservableList<LineItem> lineItems = ObservableList<LineItem>();
 
   @computed
-  double get totalPrice => cartEntries.isEmpty
+  double get totalPrice => lineItems.isEmpty
       ? 0
-      : cartEntries.map((e) => e.subtotalPrice).reduce((p1, p2) => p1 + p2);
+      : lineItems.map((e) => e.subtotalPrice).reduce((p1, p2) => p1 + p2);
 
   @computed
-  int get totalQuantity => cartEntries.isEmpty
+  int get totalQuantity => lineItems.isEmpty
       ? 0
-      : cartEntries.map((e) => e.quantity).reduce((q1, q2) => q1 + q2);
+      : lineItems.map((e) => e.quantity).reduce((q1, q2) => q1 + q2);
 
   @action
   void add(Product product) {
-    var index = cartEntries.indexWhere((e) => e.product.id == product.id);
+    var index = lineItems.indexWhere((e) => e.product.id == product.id);
     if (index < 0) {
-      cartEntries.add(LineItem(product: product, quantity: 1));
+      lineItems.add(LineItem(product: product, quantity: 1));
       return;
     }
 
-    increaseQuantity(cartEntries[index]);
+    increaseQuantity(lineItems[index]);
   }
 
   @action
@@ -43,6 +43,6 @@ abstract class CartStoreBase with Store {
       return;
     }
 
-    cartEntries.remove(cartEntry);
+    lineItems.remove(cartEntry);
   }
 }

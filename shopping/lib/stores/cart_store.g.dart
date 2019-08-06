@@ -21,21 +21,21 @@ mixin _$CartStore on CartStoreBase, Store {
       (_$totalQuantityComputed ??= Computed<int>(() => super.totalQuantity))
           .value;
 
-  final _$cartEntriesAtom = Atom(name: 'CartStoreBase.cartEntries');
+  final _$lineItemsAtom = Atom(name: 'CartStoreBase.lineItems');
 
   @override
-  ObservableList<LineItem> get cartEntries {
-    _$cartEntriesAtom.context.enforceReadPolicy(_$cartEntriesAtom);
-    _$cartEntriesAtom.reportObserved();
-    return super.cartEntries;
+  ObservableList<LineItem> get lineItems {
+    _$lineItemsAtom.context.enforceReadPolicy(_$lineItemsAtom);
+    _$lineItemsAtom.reportObserved();
+    return super.lineItems;
   }
 
   @override
-  set cartEntries(ObservableList<LineItem> value) {
-    _$cartEntriesAtom.context.conditionallyRunInAction(() {
-      super.cartEntries = value;
-      _$cartEntriesAtom.reportChanged();
-    }, _$cartEntriesAtom, name: '${_$cartEntriesAtom.name}_set');
+  set lineItems(ObservableList<LineItem> value) {
+    _$lineItemsAtom.context.conditionallyRunInAction(() {
+      super.lineItems = value;
+      _$lineItemsAtom.reportChanged();
+    }, _$lineItemsAtom, name: '${_$lineItemsAtom.name}_set');
   }
 
   final _$CartStoreBaseActionController =

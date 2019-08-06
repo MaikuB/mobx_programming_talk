@@ -20,17 +20,17 @@ class CartPage extends StatelessWidget {
             return Column(
               children: [
                 Expanded(
-                  child: store.cartEntries.isEmpty
+                  child: store.lineItems.isEmpty
                       ? Center(
                           child: Text('Your cart is empty'),
                         )
                       : ListView.builder(
                           itemBuilder: (context, index) {
                             return LineItemWidget(
-                                cartEntry: store.cartEntries[index],
+                                cartEntry: store.lineItems[index],
                                 store: store);
                           },
-                          itemCount: store.cartEntries.length,
+                          itemCount: store.lineItems.length,
                         ),
                 ),
                 Align(
